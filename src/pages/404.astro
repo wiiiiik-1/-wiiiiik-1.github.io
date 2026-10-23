@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404" description="这一页没有找到。" noIndex>
+  <section class="container" style="padding:120px 0 140px; text-align:center">
+    <p class="page-kicker">404 · Not found</p>
+    <h1 class="page-title" style="font-size:clamp(60px,12vw,120px)">走丢了</h1>
+    <p class="page-description" style="margin-inline:auto">
+      这一页可能已经被移走，或者链接写错了。回到首页，继续读笔记吧。
+    </p>
+    <p style="margin-top:32px">
+      <a class="button button-primary" href="/">回到首页</a>
+    </p>
+  </section>
+</BaseLayout>

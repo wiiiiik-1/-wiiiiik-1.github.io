@@ -1,0 +1,22 @@
+---
+import { SITE } from "../config";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="seal" aria-hidden="true">筆</span>
+      <span>{SITE.title} · {SITE.titleZh}</span>
+    </div>
+
+    <p style="margin:0">{SITE.footerNote}</p>
+
+    <div class="footer-links">
+      <a href={SITE.github} target="_blank" rel="noreferrer">GitHub</a>
+      <a href="/rss.xml">RSS</a>
+      <a href="/about/">关于</a>
+      <span>© {year}</span>
+    </div>
+  </div>
+</footer>

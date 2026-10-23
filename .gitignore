@@ -1,0 +1,26 @@
+# dependencies
+node_modules/
+.pnpm-store/
+.pnpm-debug.log*
+
+# build output
+dist/
+.astro/
+out/
+
+# local tooling and secrets
+.tools/
+.ssh/
+.ssh-public-key.txt
+.env
+.env.*
+!.env.example
+
+# scratch
+tmp/
+.tmp/
+work/
+
+# migration scratch (pack 测试的假 home 里有凭据副本，绝不能提交)
+dsh-migrate/.tmp-packtest/
+.mig-digest/

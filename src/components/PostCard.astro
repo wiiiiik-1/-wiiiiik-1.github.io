@@ -1,0 +1,45 @@
+---
+import type { Post } from "../utils";
+import { formatDate, readingTime } from "../utils";
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const featured = post.data.featured;
+const minutes = readingTime(post.body ?? "");
+---
+
+<article class:list={["post-card", { "is-featured": featured }]}>
+  <a class="post-card-link" href={`/posts/${post.id}/`}>
+    <div class="post-card-content">
+      <div class="post-card-meta">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, "short")}</time>
+        <span>{minutes} 分钟阅读</span>
+        {post.data.updated && <span>更新于 {formatDate(post.data.updated, "short")}</span>}
+      </div>
+
+      <h2>{post.data.title}</h2>
+      <p>{post.data.description}</p>
+
+      <div class="post-card-footer">
+        <div class="post-card-tags">
+          {post.data.tags.slice(0, 3).map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+        <span class="card-arrow" aria-hidden="true">→</span>
+      </div>
+    </div>
+
+    {featured && (
+      <div class="card-mark" aria-hidden="true">
+        <div>
+          Λ(x) <span style="color:var(--accent)">≷</span> P<sub>0</sub>/P<sub>1</sub>
+          <small>uniform cost · Bayes = MAP</small>
+        </div>
+      </div>
+    )}
+  </a>
+</article>

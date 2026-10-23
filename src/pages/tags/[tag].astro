@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { getAllTags, sortPosts } from "../../utils";
+
+export async function getStaticPaths() {
+  const posts = sortPosts(
+    await getCollection("posts", ({ data }) => !data.draft),
+  );
+  const tags = getAllTags(posts);
+
+  return tags.map(({ tag }) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts.filter((post) => post.data.tags.includes(tag)),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout title={`标签：${tag}`} description={`所有标记为「${tag}」的讲义笔记。`}>
+  <header class="page-header">
+    <div class="container">
+      <p class="page-kicker">Topic</p>
+      <h1 class="page-title">{tag}</h1>
+      <p class="page-description">共 {posts.length} 篇笔记。 <a href="/tags/" style="color:var(--accent)">查看全部标签 →</a></p>
+    </div>
+  </header>
+
+  <div class="container page-body">
+    <div class="post-grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </div>
+</BaseLayout>

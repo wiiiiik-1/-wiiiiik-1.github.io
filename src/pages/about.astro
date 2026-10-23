@@ -1,0 +1,65 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { SITE } from "../config";
+---
+
+<BaseLayout title="关于" description="关于这个讲义笔记站点，以及它是如何构建的。">
+  <header class="page-header">
+    <div class="container">
+      <p class="page-kicker">About</p>
+      <h1 class="page-title">关于这个站点</h1>
+      <p class="page-description">
+        一个安静的地方，用来存放课堂讲义、数学推导和手写手稿的整理版本。
+      </p>
+    </div>
+  </header>
+
+  <div class="container page-body about-grid">
+    <div class="prose">
+      <p>
+        这里的笔记来自课堂板书、手写讲义和课后整理。目标不是把每一个公式都写得像教材，
+        而是保留课堂的节奏：定义、直觉、推导、例子，以及那些当时没听懂、后来想明白的地方。
+      </p>
+
+      <h2>为什么做成网站</h2>
+      <p>
+        PDF 和纸面适合阅读，但不方便搜索、引用和长期维护。把笔记转成 Markdown，
+        用 KaTeX 排版公式，用 Git 管理版本，就可以在保持手写感的同时，让每一篇笔记都能被反复阅读和修订。
+      </p>
+
+      <blockquote>
+        公式是压缩过的语言。把推导展开，把术语对照清楚，课堂上的英文就不再是障碍。
+      </blockquote>
+
+      <h2>怎么做的</h2>
+      <ul>
+        <li>内容：Markdown + YAML frontmatter</li>
+        <li>框架：Astro 静态站点</li>
+        <li>公式：KaTeX（构建时渲染）</li>
+        <li>部署：GitHub Actions → GitHub Pages</li>
+        <li>字体：优先使用系统字体，避免外部字体加载</li>
+      </ul>
+
+      <h2>联系</h2>
+      <p>
+        可以在 <a href={SITE.github} target="_blank" rel="noreferrer">GitHub</a> 上找到我。
+        如果笔记里有错误，欢迎开 issue 或提 PR。
+      </p>
+    </div>
+
+    <aside class="about-card">
+      <h2>Colophon</h2>
+      <p>
+        站点名：{SITE.title}<br />
+        中文名：{SITE.titleZh}<br />
+        作者：{SITE.author}
+      </p>
+      <p>
+        主题取意“纸与墨”：米白纸面、宋体正文、朱砂强调色，以及一点点手稿的倾斜和不整齐。
+      </p>
+      <p>
+        <a href="/rss.xml">RSS</a> · <a href={SITE.github} target="_blank" rel="noreferrer">GitHub</a>
+      </p>
+    </aside>
+  </div>
+</BaseLayout>

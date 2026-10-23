@@ -1,0 +1,65 @@
+---
+import { SITE } from "../config";
+
+const pathname = Astro.url.pathname;
+
+function isActive(href: string): boolean {
+  if (href === "/posts/") {
+    return pathname === "/" || pathname.startsWith("/posts/");
+  }
+  return pathname === href || pathname.startsWith(href);
+}
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label={`${SITE.title} 首页`}>
+      <span class="brand-seal" aria-hidden="true">筆</span>
+      <span class="brand-text">
+        <span class="brand-title">{SITE.title}</span>
+        <span class="brand-sub">Lecture notes · {SITE.titleZh}</span>
+      </span>
+    </a>
+
+    <div class="header-right">
+      <nav class="nav" id="site-nav" data-nav aria-label="主导航">
+        {SITE.nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
+      <button
+        class="icon-button"
+        type="button"
+        data-theme-toggle
+        aria-label="切换深浅色模式"
+      >
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.66 6.34l1.41-1.41" />
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z" />
+        </svg>
+      </button>
+
+      <button
+        class="icon-button menu-toggle"
+        type="button"
+        data-menu-toggle
+        aria-label="打开导航菜单"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>

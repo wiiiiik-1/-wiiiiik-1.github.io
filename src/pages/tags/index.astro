@@ -1,0 +1,30 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllTags, sortPosts } from "../../utils";
+
+const posts = sortPosts(
+  await getCollection("posts", ({ data }) => !data.draft),
+);
+const tags = getAllTags(posts);
+---
+
+<BaseLayout title="标签" description="按主题浏览全部讲义笔记。">
+  <header class="page-header">
+    <div class="container">
+      <p class="page-kicker">Index by topic</p>
+      <h1 class="page-title">标签</h1>
+      <p class="page-description">按主题浏览笔记。标签数量会随着手稿整理逐渐增加。</p>
+    </div>
+  </header>
+
+  <div class="container page-body">
+    <div class="tag-cloud">
+      {tags.map(({ tag, count }) => (
+        <a href={`/tags/${encodeURIComponent(tag)}/`}>
+          {tag} <span class="count">{count}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,88 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PostCard from "../components/PostCard.astro";
+import { getAllTags, sortPosts } from "../utils";
+
+const posts = sortPosts(
+  await getCollection("posts", ({ data }) => !data.draft),
+);
+const tags = getAllTags(posts);
+const featured = posts.find((post) => post.data.featured) ?? posts[0];
+const rest = posts.filter((post) => post.id !== featured?.id);
+const latestYear = posts[0]?.data.date.getFullYear();
+---
+
+<BaseLayout>
+  <section class="container hero">
+    <div>
+      <p class="eyebrow">Lecture notes · 讲义手稿</p>
+      <h1>把课堂上的公式，<br /><em>整理成可以</em><br /><em>反复阅读的笔记。</em></h1>
+      <p class="lede">
+        这里存放课堂讲义、推导过程和手稿整理。数学公式用 KaTeX 排版，
+        英文术语保留手稿原词，方便在课堂上快速对应。
+      </p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="#notes">开始阅读 <span aria-hidden="true">↓</span></a>
+        <a class="button button-ghost" href="/rss.xml">RSS 订阅</a>
+      </div>
+      <dl class="hero-stats">
+        <div>
+          <dt>Notes</dt>
+          <dd>{posts.length.toString().padStart(2, "0")}</dd>
+        </div>
+        <div>
+          <dt>Topics</dt>
+          <dd>{tags.length.toString().padStart(2, "0")}</dd>
+        </div>
+        <div>
+          <dt>Since</dt>
+          <dd>{latestYear ?? "—"}</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero-card" aria-hidden="true">
+      <div class="hero-formula">
+        Λ(x) <span class="op">≷</span> P<sub>0</sub>/P<sub>1</sub>
+        <small>likelihood ratio · decision threshold</small>
+      </div>
+      <div class="hero-annotation">
+        under uniform cost · Bayes test ≡ MAP test
+      </div>
+      <div class="hero-seal">筆</div>
+    </div>
+  </section>
+
+  <section class="container section" id="notes">
+    <div class="section-head">
+      <h2 class="section-title">最新笔记</h2>
+      <p class="section-note"><a href="/posts/">全部笔记 →</a></p>
+    </div>
+
+    {posts.length > 0 ? (
+      <div class="post-grid">
+        {featured && <PostCard post={featured} />}
+        {rest.map((post) => <PostCard post={post} />)}
+      </div>
+    ) : (
+      <p style="color:var(--muted)">还没有公开的笔记。把 Markdown 放进 <code>src/content/posts/</code> 即可。</p>
+    )}
+  </section>
+
+  {tags.length > 0 && (
+    <section class="container section" style="padding-top:0">
+      <div class="section-head">
+        <h2 class="section-title">Topics</h2>
+        <p class="section-note">按主题浏览</p>
+      </div>
+      <div class="tag-cloud">
+        {tags.map(({ tag, count }) => (
+          <a href={`/tags/${encodeURIComponent(tag)}/`}>
+            {tag} <span class="count">{count}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+</BaseLayout>

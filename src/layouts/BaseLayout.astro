@@ -1,0 +1,109 @@
+---
+import "katex/dist/katex.min.css";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../config";
+
+interface Props {
+  title?: string;
+  description?: string;
+  type?: "website" | "article";
+  noIndex?: boolean;
+  lang?: string;
+  publishedTime?: string;
+  tags?: string[];
+}
+
+const {
+  title,
+  description = SITE.description,
+  type = "website",
+  noIndex = false,
+  lang = "zh-CN",
+  publishedTime,
+  tags = [],
+} = Astro.props;
+
+const pageTitle = title ? `${title} · ${SITE.title}` : `${SITE.title} — ${SITE.titleZh}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={lang} data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={SITE.author} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={`${SITE.title} RSS`} href="/rss.xml" />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE.title} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {tags.map((tag) => <meta property="article:tag" content={tag} />)}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="theme-color" content="#f7f2e8" />
+
+    <script is:inline>
+      (() => {
+        try {
+          const stored = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const theme = stored || (prefersDark ? "dark" : "light");
+          document.documentElement.dataset.theme = theme;
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute("content", theme === "dark" ? "#151a1d" : "#f7f2e8");
+        } catch {
+          document.documentElement.dataset.theme = "light";
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script is:inline>
+      (() => {
+        const root = document.documentElement;
+        const toggle = document.querySelector("[data-theme-toggle]");
+        toggle?.addEventListener("click", () => {
+          const next = root.dataset.theme === "dark" ? "light" : "dark";
+          root.dataset.theme = next;
+          localStorage.setItem("theme", next);
+          document
+            .querySelector('meta[name="theme-color"]')
+            ?.setAttribute("content", next === "dark" ? "#151a1d" : "#f7f2e8");
+          toggle.setAttribute(
+            "aria-label",
+            next === "dark" ? "切换到浅色模式" : "切换到深色模式",
+          );
+        });
+
+        const menuButton = document.querySelector("[data-menu-toggle]");
+        const nav = document.querySelector("[data-nav]");
+        menuButton?.addEventListener("click", () => {
+          const open = nav?.dataset.open === "true";
+          if (nav) nav.dataset.open = String(!open);
+          menuButton.setAttribute("aria-expanded", String(!open));
+        });
+      })();
+    </script>
+  </body>
+</html>

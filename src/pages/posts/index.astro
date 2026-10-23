@@ -1,0 +1,26 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostCard from "../../components/PostCard.astro";
+import { sortPosts } from "../../utils";
+
+const posts = sortPosts(
+  await getCollection("posts", ({ data }) => !data.draft),
+);
+---
+
+<BaseLayout title="全部笔记" description="全部公开的课堂讲义与手稿整理。">
+  <header class="page-header">
+    <div class="container">
+      <p class="page-kicker">All notes</p>
+      <h1 class="page-title">全部笔记</h1>
+      <p class="page-description">共 {posts.length} 篇。按时间从新到旧排列。</p>
+    </div>
+  </header>
+
+  <div class="container page-body">
+    <div class="post-grid">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  </div>
+</BaseLayout>

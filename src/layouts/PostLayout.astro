@@ -1,0 +1,142 @@
+---
+import { render } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import Toc from "../components/Toc.astro";
+import type { Post } from "../utils";
+import { formatDate, readingTime } from "../utils";
+
+interface Props {
+  post: Post;
+  prev?: Post;
+  next?: Post;
+}
+
+const { post, prev, next } = Astro.props;
+const { Content, headings } = await render(post);
+const minutes = readingTime(post.body ?? "");
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  type="article"
+  lang={post.data.lang}
+  publishedTime={post.data.date.toISOString()}
+  tags={post.data.tags}
+>
+  <div class="reading-progress" data-progress></div>
+
+  <header class="post-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/">笔记</a>
+        <span class="sep">/</span>
+        <span>{post.data.tags[0] ?? "讲义"}</span>
+      </div>
+
+      <h1 class="post-title">{post.data.title}</h1>
+      <p class="post-description">{post.data.description}</p>
+
+      <div class="post-meta">
+        <span>
+          <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        </span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>{minutes} 分钟阅读</span>
+        {post.data.updated && (
+          <>
+            <span class="dot" aria-hidden="true"></span>
+            <span>更新于 {formatDate(post.data.updated)}</span>
+          </>
+        )}
+      </div>
+
+      <div class="post-tags">
+        {post.data.tags.map((tag) => (
+          <a class="tag" href={`/tags/${encodeURIComponent(tag)}/`}>{tag}</a>
+        ))}
+      </div>
+    </div>
+  </header>
+
+  <div class="container post-body">
+    <div class="post-main">
+      <article class="prose" data-article>
+        <Content />
+      </article>
+
+      {post.data.pdf && (
+        <p class="post-pdf">
+          <a href={post.data.pdf} target="_blank" rel="noreferrer">查看原始手稿 PDF →</a>
+        </p>
+      )}
+
+      <nav class="post-nav" aria-label="上一篇 / 下一篇">
+        {prev ? (
+          <a href={`/posts/${prev.id}/`}>
+            <span class="nav-label">← 上一篇</span>
+            <span class="nav-title">{prev.data.title}</span>
+          </a>
+        ) : (
+          <span></span>
+        )}
+        {next ? (
+          <a class="next" href={`/posts/${next.id}/`}>
+            <span class="nav-label">下一篇 →</span>
+            <span class="nav-title">{next.data.title}</span>
+          </a>
+        ) : (
+          <span></span>
+        )}
+      </nav>
+
+      <a class="back-top" href="#main">↑ 回到顶部</a>
+    </div>
+
+    <aside class="post-aside">
+      <Toc headings={headings} />
+    </aside>
+  </div>
+
+  <script is:inline>
+    (() => {
+      const bar = document.querySelector("[data-progress]");
+      const article = document.querySelector("[data-article]");
+      if (!bar || !article) return;
+
+      const update = () => {
+        const rect = article.getBoundingClientRect();
+        const total = rect.height - window.innerHeight;
+        const progress = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
+        bar.style.width = `${(progress * 100).toFixed(2)}%`;
+      };
+
+      const tocLinks = Array.from(document.querySelectorAll(".toc a"));
+      const tocTargets = tocLinks
+        .map((link) => {
+          const id = decodeURIComponent(link.hash.slice(1));
+          return { link, el: document.getElementById(id) };
+        })
+        .filter((item) => item.el);
+      const tocActive = () => {
+        const fromTop = window.scrollY + 150;
+        let current = tocTargets[0];
+        for (const item of tocTargets) {
+          if (item.el && item.el.getBoundingClientRect().top + window.scrollY <= fromTop) {
+            current = item;
+          }
+        }
+        tocLinks.forEach((link) => link.classList.remove("is-active"));
+        current?.link.classList.add("is-active");
+      };
+      const onScroll = () => {
+        update();
+        tocActive();
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll);
+      onScroll();
+    })();
+  </script>
+</BaseLayout>
