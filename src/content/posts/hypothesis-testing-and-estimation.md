@@ -33,7 +33,7 @@ lang: "zh-CN"
 ```
 
 - **材料一**：θ 只取两个（或有限个）假设，动作是“判 H0 / 判 H1”，关心的是**错误率和代价**。
-- **材料二**：θ 是连续参数，动作是“给出估计值 \(\hat\theta\)”，关心的是**偏差、方差、均方误差和置信区间**。
+- **材料二**：θ 是连续参数，动作是“给出估计值 $\hat\theta$”，关心的是**偏差、方差、均方误差和置信区间**。
 - 两份讲义最后都落到同一个贝叶斯模板：
 
 $$
@@ -60,23 +60,23 @@ $$
 
 | 符号 | 含义 | 备注 |
 |---|---|---|
-| \(\theta\) | 未知参数 / 真实状态 | 材料一中是离散假设，材料二中是连续参数 |
-| \(\Theta\) | 参数空间 | \(\theta\in\Theta\) |
-| \(H_0,H_1\) | 两个假设 | \(H_0\) 常称“原假设”，\(H_1\) 常称“备择假设” |
-| \(X,x\) | 观测随机变量 / 观测值 | \(X\) 可以是向量 |
-| \(f_X(x\mid H_i)\) | 在假设 \(H_i\) 下 \(X\) 的条件密度 | 材料一中称为 likelihood |
-| \(P_0,P_1\) | 先验概率 \(P(H_0),P(H_1)\) | \(P_0+P_1=1\) |
-| \(L(x)\) | **似然比** \(\dfrac{f_X(x\mid H_1)}{f_X(x\mid H_0)}\) | 材料一专用；注意与材料二的似然函数区分 |
-| \(P_{FA}\) | 虚警率 \(P(\text{判 }H_1\mid H_0)\) | false alarm，第一类错误 |
-| \(P_M\) | 漏检率 \(P(\text{判 }H_0\mid H_1)\) | miss，第二类错误 |
-| \(P_D\) | 检测率 \(P(\text{判 }H_1\mid H_1)=1-P_M\) | detection / sensitivity / recall |
-| \(C_{ij}\) | 判 \(H_i\)、实际 \(H_j\) 时的代价 | \(i,j\in\{0,1\}\) |
-| \(C_{FA}\) | 虚警代价，等于 \(C_{10}\) | 常与 \(C_M\) 一起用 |
-| \(C_M\) | 漏检代价，等于 \(C_{01}\) | 常与 \(C_{FA}\) 一起用 |
-| \(\hat\theta\) | \(\theta\) 的估计量 | 材料二 |
-| \(L(\theta;\vec x)\) | **似然函数** \(\prod_i f_{X_i}(x_i\mid\theta)\) | 材料二专用；与材料一的 \(L(x)\) 含义不同 |
+| $\theta$ | 未知参数 / 真实状态 | 材料一中是离散假设，材料二中是连续参数 |
+| $\Theta$ | 参数空间 | $\theta\in\Theta$ |
+| $H_0,H_1$ | 两个假设 | $H_0$ 常称“原假设”，$H_1$ 常称“备择假设” |
+| $X,x$ | 观测随机变量 / 观测值 | $X$ 可以是向量 |
+| $f_X(x\mid H_i)$ | 在假设 $H_i$ 下 $X$ 的条件密度 | 材料一中称为 likelihood |
+| $P_0,P_1$ | 先验概率 $P(H_0),P(H_1)$ | $P_0+P_1=1$ |
+| $L(x)$ | **似然比** $\dfrac{f_X(x\mid H_1)}{f_X(x\mid H_0)}$ | 材料一专用；注意与材料二的似然函数区分 |
+| $P_{FA}$ | 虚警率 $P(\text{判 }H_1\mid H_0)$ | false alarm，第一类错误 |
+| $P_M$ | 漏检率 $P(\text{判 }H_0\mid H_1)$ | miss，第二类错误 |
+| $P_D$ | 检测率 $P(\text{判 }H_1\mid H_1)=1-P_M$ | detection / sensitivity / recall |
+| $C_{ij}$ | 判 $H_i$、实际 $H_j$ 时的代价 | $i,j\in\{0,1\}$ |
+| $C_{FA}$ | 虚警代价，等于 $C_{10}$ | 常与 $C_M$ 一起用 |
+| $C_M$ | 漏检代价，等于 $C_{01}$ | 常与 $C_{FA}$ 一起用 |
+| $\hat\theta$ | $\theta$ 的估计量 | 材料二 |
+| $L(\theta;\vec x)$ | **似然函数** $\prod_i f_{X_i}(x_i\mid\theta)$ | 材料二专用；与材料一的 $L(x)$ 含义不同 |
 
-> **符号警告**：材料一的 \(L(x)\) 是“似然比”，材料二的 \(L(\theta;\vec x)\) 是“似然函数”。两者都写成 \(L\)，但完全不是同一个东西。跨文档比较时，本笔记会把似然比记作 \(\Lambda(x)\)，以免混淆。
+> **符号警告**：材料一的 $L(x)$ 是“似然比”，材料二的 $L(\theta;\vec x)$ 是“似然函数”。两者都写成 $L$，但完全不是同一个东西。跨文档比较时，本笔记会把似然比记作 $\Lambda(x)$，以免混淆。
 
 ### 1.1 假设检验：符号、公式与手稿英文
 
@@ -84,92 +84,92 @@ $$
 
 | 符号/公式 | 英文（手稿/课堂常用） | 中文 |
 |---|---|---|
-| \(\theta\) | hidden (unknown) parameter | 隐藏/未知参数 |
-| \(f_X(x\mid\theta)\) | parametric model; conditional probability density function (PDF); likelihood | 参数化模型；条件概率密度；似然 |
-| \(X\) | observations / measurement / data | 观测/测量/数据 |
+| $\theta$ | hidden (unknown) parameter | 隐藏/未知参数 |
+| $f_X(x\mid\theta)$ | parametric model; conditional probability density function (PDF); likelihood | 参数化模型；条件概率密度；似然 |
+| $X$ | observations / measurement / data | 观测/测量/数据 |
 | decision rule | decision rule | 决策规则 |
-| \(H_0,H_1\) | hypotheses | 假设 |
-| \(P_0,P_1\) | prior probabilities | 先验概率 |
-| \(P_{FA}\) | false alarm probability; type-1 error rate; false positive rate | 虚警率；第一类错误率；假阳性率 |
-| \(P_M\) | miss probability; type-2 error rate; false negative rate | 漏检率；第二类错误率；假阴性率 |
-| \(P_D\) | detection probability; true positive rate; sensitivity; recall; power of the test | 检测率；真阳性率；灵敏度；召回率；检验功效 |
+| $H_0,H_1$ | hypotheses | 假设 |
+| $P_0,P_1$ | prior probabilities | 先验概率 |
+| $P_{FA}$ | false alarm probability; type-1 error rate; false positive rate | 虚警率；第一类错误率；假阳性率 |
+| $P_M$ | miss probability; type-2 error rate; false negative rate | 漏检率；第二类错误率；假阴性率 |
+| $P_D$ | detection probability; true positive rate; sensitivity; recall; power of the test | 检测率；真阳性率；灵敏度；召回率；检验功效 |
 | specificity | specificity; true negative rate | 特异度；真阴性率 |
 | precision | precision; positive predictive value (PPV) | 精确率；阳性预测值 |
-| \(C_{FA}\) | cost of false alarm | 虚警代价 |
-| \(C_M\) | cost of a miss | 漏检代价 |
-| \(C_{ij}\) | cost of deciding \(H_i\) when in fact \(H_j\) was true | 判 \(H_i\)、实际 \(H_j\) 为真时的代价 |
-| \(L(x)\) | likelihood ratio function | 似然比函数 |
-| \(P(\text{error})\) | probability of error | 错误概率 |
-| \(E[\text{cost}]\) | expected cost; Bayes risk | 期望代价；贝叶斯风险 |
+| $C_{FA}$ | cost of false alarm | 虚警代价 |
+| $C_M$ | cost of a miss | 漏检代价 |
+| $C_{ij}$ | cost of deciding $H_i$ when in fact $H_j$ was true | 判 $H_i$、实际 $H_j$ 为真时的代价 |
+| $L(x)$ | likelihood ratio function | 似然比函数 |
+| $P(\text{error})$ | probability of error | 错误概率 |
+| $E[\text{cost}]$ | expected cost; Bayes risk | 期望代价；贝叶斯风险 |
 | uniform cost | uniform cost | 均匀代价 |
 | ML | Maximum Likelihood | 最大似然 |
 | MAP | Maximum A Posteriori Probability | 最大后验概率 |
 | Bayes decision rule | Bayesian Decision Rule; Bayes Test | 贝叶斯判决规则/贝叶斯检验 |
-| \(\tau\) | threshold | 阈值 |
-| \(T(x)\) | test statistic | 检验统计量 |
-| \(\alpha\) | false alarm probability | 虚警率（检验的显著性水平） |
+| $\tau$ | threshold | 阈值 |
+| $T(x)$ | test statistic | 检验统计量 |
+| $\alpha$ | false alarm probability | 虚警率（检验的显著性水平） |
 
 ### 1.2 参数估计：符号、公式与手稿英文
 
 | 符号/公式 | 英文（手稿/课堂常用） | 中文 |
 |---|---|---|
-| \(\hat\theta\) | estimator / estimate | 估计量/估计值 |
+| $\hat\theta$ | estimator / estimate | 估计量/估计值 |
 | bias | bias of the estimation | 估计偏差 |
 | standard error | standard error | 标准误 |
 | consistency | consistent estimator | 一致估计量 |
-| \(L(\theta;\vec x)\) | likelihood function | 似然函数 |
-| \(\ell(\theta;\vec x)\) | log-likelihood function | 对数似然函数 |
+| $L(\theta;\vec x)$ | likelihood function | 似然函数 |
+| $\ell(\theta;\vec x)$ | log-likelihood function | 对数似然函数 |
 | MLE | Maximum Likelihood Estimation / Estimator | 最大似然估计/估计量 |
 | posterior | posterior distribution | 后验分布 |
 | MAP estimator | Maximum A Posteriori Probability Estimator | 最大后验估计 |
 | MMSE | Minimum Mean-Squared Error Estimator | 最小均方误差估计 |
 | MAE | Minimum Absolute Error Estimation | 最小绝对误差估计 |
-| \(S\) | sufficient statistic; total number of Heads | 充分统计量；正面总数 |
-| \(\bar S\) | sample average; fraction of Heads | 样本均值；正面比例 |
+| $S$ | sufficient statistic; total number of Heads | 充分统计量；正面总数 |
+| $\bar S$ | sample average; fraction of Heads | 样本均值；正面比例 |
 | Hoeffding inequality | Hoeffding Inequality | 霍夫丁不等式 |
 | confidence interval | confidence interval | 置信区间 |
 | p-value | p-value | p 值 |
-| \(\epsilon\) | interval half-width / accuracy | 区间半宽/精度 |
-| \(\delta\) | tail probability (per side) | 单侧尾部概率 |
+| $\epsilon$ | interval half-width / accuracy | 区间半宽/精度 |
+| $\delta$ | tail probability (per side) | 单侧尾部概率 |
 
 ### 1.3 公式英文名速查
 
 | 公式 | 英文名 | 中文 |
 |---|---|---|
-| \(P(\text{error})=P_0P_{FA}+P_1P_M\) | Probability of error | 错误概率 |
-| \(E[\text{cost}]=P_0P_{FA}C_{FA}+P_1P_MC_M\) | Expected cost; Bayes risk | 期望代价；贝叶斯风险 |
-| \(\Lambda(x)\gtrless \tau\) | Likelihood ratio test; Bayes decision rule | 似然比检验；贝叶斯判决规则 |
-| \(\Lambda(x)\gtrless P_0/P_1\) | MAP decision rule | 最大后验判决规则 |
-| \(\Lambda(x)\gtrless 1\) | ML decision rule | 最大似然判决规则 |
-| \(E[\text{cost}]=P(\text{error})\) | Expected cost under uniform cost | 均匀代价下的期望代价 |
-| \(\hat\theta_{ML}\) | Maximum Likelihood Estimator (MLE) | 最大似然估计 |
-| \(\hat\theta_{MAP}\) | Maximum A Posteriori Probability Estimator | 最大后验估计 |
-| \(\hat\theta_{MMSE}\) | Minimum Mean-Squared Error Estimator | 最小均方误差估计 |
-| \(\hat\theta_{MAE}\) | Minimum Absolute Error Estimator | 最小绝对误差估计 |
-| \(P(\lvert\bar S-\theta\rvert>\epsilon)\le 2e^{-2n\epsilon^2}\) | Hoeffding Inequality | 霍夫丁不等式 |
-| \(\theta\in[\bar S-\epsilon,\bar S+\epsilon]\) | Confidence interval | 置信区间 |
+| $P(\text{error})=P_0P_{FA}+P_1P_M$ | Probability of error | 错误概率 |
+| $E[\text{cost}]=P_0P_{FA}C_{FA}+P_1P_MC_M$ | Expected cost; Bayes risk | 期望代价；贝叶斯风险 |
+| $\Lambda(x)\gtrless \tau$ | Likelihood ratio test; Bayes decision rule | 似然比检验；贝叶斯判决规则 |
+| $\Lambda(x)\gtrless P_0/P_1$ | MAP decision rule | 最大后验判决规则 |
+| $\Lambda(x)\gtrless 1$ | ML decision rule | 最大似然判决规则 |
+| $E[\text{cost}]=P(\text{error})$ | Expected cost under uniform cost | 均匀代价下的期望代价 |
+| $\hat\theta_{ML}$ | Maximum Likelihood Estimator (MLE) | 最大似然估计 |
+| $\hat\theta_{MAP}$ | Maximum A Posteriori Probability Estimator | 最大后验估计 |
+| $\hat\theta_{MMSE}$ | Minimum Mean-Squared Error Estimator | 最小均方误差估计 |
+| $\hat\theta_{MAE}$ | Minimum Absolute Error Estimator | 最小绝对误差估计 |
+| $P(\lvert\bar S-\theta\rvert>\epsilon)\le 2e^{-2n\epsilon^2}$ | Hoeffding Inequality | 霍夫丁不等式 |
+| $\theta\in[\bar S-\epsilon,\bar S+\epsilon]$ | Confidence interval | 置信区间 |
 
 ### 1.4 课堂高频英文表达
 
 | 英文原话/常用句 | 中文 | 出现场景 |
 |---|---|---|
-| Let \(\theta\) represent ... | 令 \(\theta\) 表示…… | 建模 |
+| Let $\theta$ represent ... | 令 $\theta$ 表示…… | 建模 |
 | Assume that ... | 假设…… | 建模 |
-| We observe \(X=x\) ... | 我们观测到…… | 数据 |
+| We observe $X=x$ ... | 我们观测到…… | 数据 |
 | We have to decide which of the two hypotheses hold. | 我们要判断哪个假设成立。 | 决策 |
 | The decision rule is given by ... | 判决规则为…… | 规则 |
 | This is equivalent to ... | 这等价于…… | 推导 |
-| The threshold is calculated by finding the \(x\) value for which \(L(x)=1\). | 阈值通过令 \(L(x)=1\) 求得。 | ML 阈值 |
+| The threshold is calculated by finding the $x$ value for which $L(x)=1$. | 阈值通过令 $L(x)=1$ 求得。 | ML 阈值 |
 | By applying Bayes' Rule ... | 应用贝叶斯公式…… | MAP |
 | Under uniform cost ... | 在均匀代价下…… | 总结 |
 | This proves that ... | 这证明了…… | 证明 |
 | In summary ... | 总结…… | 总结 |
-| Minimizing \(E[\text{cost}]\) is equivalent to minimizing ... | 最小化期望代价等价于最小化…… | 风险 |
+| Minimizing $E[\text{cost}]$ is equivalent to minimizing ... | 最小化期望代价等价于最小化…… | 风险 |
 | The ML estimate is ... | 最大似然估计是…… | MLE |
 | MAP estimator looks at the mode ... | MAP 估计看众数…… | 贝叶斯估计 |
 | We can show that ... | 我们可以证明…… | 推导 |
 | With probability at least ... | 以至少……的概率 | 置信区间 |
-| As \(n\to\infty\) ... | 当 \(n\) 趋于无穷…… | 渐近性 |
+| As $n\to\infty$ ... | 当 $n$ 趋于无穷…… | 渐近性 |
 | i.e. | 即 | 通用 |
 | aka | 又称 | 通用 |
 | w.r.t. | 关于 | 求导 |
@@ -178,26 +178,26 @@ $$
 
 | 公式/符号 | 课堂口语读法 | 中文 |
 |---|---|---|
-| \(\hat\theta\) | “theta hat” | \(\theta\) 的估计 |
-| \(\bar S\) | “S bar” | 样本均值 |
-| \(P_{FA}\) | “P F A” / “probability of false alarm” | 虚警率 |
-| \(P_M\) | “P M” / “probability of miss” | 漏检率 |
-| \(P_D\) | “P D” / “probability of detection” | 检测率 |
-| \(P(H_i\mid x)\) | “probability of H i given x” | 给定 \(x\) 时 \(H_i\) 的概率 |
-| \(f_X(x\mid H_i)\) | “density of X given H i” | 给定 \(H_i\) 时 \(X\) 的密度 |
-| \(\Lambda(x)\) | “likelihood ratio” / “lambda of x” | 似然比 |
-| \(E[\text{cost}]\) | “expected cost” | 期望代价 |
-| \(\tau\) | “tau” | 阈值 |
-| \(n\to\infty\) | “as n goes to infinity” | \(n\) 趋于无穷 |
-| \(\xrightarrow{p}\) | “converges in probability” | 依概率收敛 |
-| \(\xrightarrow{d}\) | “converges in distribution” | 依分布收敛 |
+| $\hat\theta$ | “theta hat” | $\theta$ 的估计 |
+| $\bar S$ | “S bar” | 样本均值 |
+| $P_{FA}$ | “P F A” / “probability of false alarm” | 虚警率 |
+| $P_M$ | “P M” / “probability of miss” | 漏检率 |
+| $P_D$ | “P D” / “probability of detection” | 检测率 |
+| $P(H_i\mid x)$ | “probability of H i given x” | 给定 $x$ 时 $H_i$ 的概率 |
+| $f_X(x\mid H_i)$ | “density of X given H i” | 给定 $H_i$ 时 $X$ 的密度 |
+| $\Lambda(x)$ | “likelihood ratio” / “lambda of x” | 似然比 |
+| $E[\text{cost}]$ | “expected cost” | 期望代价 |
+| $\tau$ | “tau” | 阈值 |
+| $n\to\infty$ | “as n goes to infinity” | $n$ 趋于无穷 |
+| $\xrightarrow{p}$ | “converges in probability” | 依概率收敛 |
+| $\xrightarrow{d}$ | “converges in distribution” | 依分布收敛 |
 | iid | “i i d” / “independent and identically distributed” | 独立同分布 |
 | w.r.t. | “with respect to” | 关于 |
 | i.e. | “that is” | 即 |
 | e.g. | “for example” | 例如 |
 | aka | “also known as” | 又称 |
 
-> **上课用法**：听到 “likelihood ratio” → 手上写 \(\Lambda(x)=\dfrac{f_X(x\mid H_1)}{f_X(x\mid H_0)}\)；听到 “uniform cost” → 写 \(C_{00}=C_{11}=0,\ C_{10}=C_{01}=1\)；听到 “under uniform cost” → 立刻想到 “Bayes = MAP，且 \(E[\text{cost}]=P(\text{error})\)”。这样耳朵听到英文，手上就能同步写出公式。
+> **上课用法**：听到 “likelihood ratio” → 手上写 $\Lambda(x)=\dfrac{f_X(x\mid H_1)}{f_X(x\mid H_0)}$；听到 “uniform cost” → 写 $C_{00}=C_{11}=0,\ C_{10}=C_{01}=1$；听到 “under uniform cost” → 立刻想到 “Bayes = MAP，且 $E[\text{cost}]=P(\text{error})$”。这样耳朵听到英文，手上就能同步写出公式。
 
 ---
 
@@ -211,17 +211,17 @@ $$
 \theta \;\longrightarrow\; f_X(x\mid\theta) \;\longrightarrow\; X \;\longrightarrow\; \text{Hypothesis Testing} \;\longrightarrow\; H_0 \text{ 或 } H_1.
 $$
 
-- \(\theta\) 是隐藏的、未知的参数；我们想推断它。
-- \(f_X(x\mid\theta)\) 是**假设已知**的参数化模型，它给出观测 \(X\) 与 \(\theta\) 之间的统计关系。
-- \(X\) 是观测/测量/数据，可以是向量。
+- $\theta$ 是隐藏的、未知的参数；我们想推断它。
+- $f_X(x\mid\theta)$ 是**假设已知**的参数化模型，它给出观测 $X$ 与 $\theta$ 之间的统计关系。
+- $X$ 是观测/测量/数据，可以是向量。
 - “Hypothesis Testing”这个框就是我们要设计的**决策规则（decision rule）**。
 
 几个术语：
 
-- **二值检验（binary testing problem）**：只有 \(H_0,H_1\) 两个假设。
-- **M 元检验（M-ary hypothesis testing problem）**：有 \(H_0,H_1,\dots,H_{M-1}\) 多个假设。
-- **简单假设（simple hypothesis）**：假设集合只含一个元素，例如 \(H_0:\theta=\theta_0\)。
-- **复合假设（composite hypothesis）**：假设集合含多个元素，例如 \(H_0:\theta\le 74\)。
+- **二值检验（binary testing problem）**：只有 $H_0,H_1$ 两个假设。
+- **M 元检验（M-ary hypothesis testing problem）**：有 $H_0,H_1,\dots,H_{M-1}$ 多个假设。
+- **简单假设（simple hypothesis）**：假设集合只含一个元素，例如 $H_0:\theta=\theta_0$。
+- **复合假设（composite hypothesis）**：假设集合含多个元素，例如 $H_0:\theta\le 74$。
 
 **温度例子**（第 1 页）：
 
@@ -239,13 +239,13 @@ $$
 X=\theta+\varepsilon,
 $$
 
-其中 \(\varepsilon\) 是随机测量误差，假设其分布已知（例如零均值高斯）。这个例子说明：**假设可以是一个参数区间，而不一定是一个单点。**
+其中 $\varepsilon$ 是随机测量误差，假设其分布已知（例如零均值高斯）。这个例子说明：**假设可以是一个参数区间，而不一定是一个单点。**
 
 **三个应用**（第 2 页）：
 
-1. **数字通信**：\(X=\theta+\text{Noise}\)，根据接收信号判断发送的是 0 还是 1。
-2. **医学诊断**：\(X\) 是 PCR/荧光信号，判断病人是否感染。
-3. **雷达/激光雷达**：\(X\) 是传感器测量，判断有没有目标。
+1. **数字通信**：$X=\theta+\text{Noise}$，根据接收信号判断发送的是 0 还是 1。
+2. **医学诊断**：$X$ 是 PCR/荧光信号，判断病人是否感染。
+3. **雷达/激光雷达**：$X$ 是传感器测量，判断有没有目标。
 
 这三个场景的共同结构都是：**观测有噪声，必须在两个假设之间做选择。**
 
@@ -255,10 +255,10 @@ $$
 
 第 3 页的四格表是整份讲义的语言基础：
 
-| 真实情况 \ 我们的决策 | 判 \(H_0\) | 判 \(H_1\) |
+| 真实情况 \ 我们的决策 | 判 $H_0$ | 判 $H_1$ |
 |---|---|---|
-| \(H_0\) 为真 | 真阴性（true negative） | **第一类错误 / 虚警**（type-1 error / false alarm），概率 \(P_{FA}\) |
-| \(H_1\) 为真 | **第二类错误 / 漏检**（type-2 error / miss），概率 \(P_M\) | 真阳性（true positive / detection） |
+| $H_0$ 为真 | 真阴性（true negative） | **第一类错误 / 虚警**（type-1 error / false alarm），概率 $P_{FA}$ |
+| $H_1$ 为真 | **第二类错误 / 漏检**（type-2 error / miss），概率 $P_M$ | 真阳性（true positive / detection） |
 
 对应的条件概率：
 
@@ -270,7 +270,7 @@ $$
 P_{FA}=P(\text{判 }H_1\mid H_0\text{ 为真}).
 $$
 
-注意这两个概率都是**条件概率**，不是联合概率。它们的分母分别是“真实为 \(H_1\)”和“真实为 \(H_0\)”。
+注意这两个概率都是**条件概率**，不是联合概率。它们的分母分别是“真实为 $H_1$”和“真实为 $H_0$”。
 
 ---
 
@@ -280,11 +280,11 @@ $$
 
 | 指标 | 定义 | 直觉 |
 |---|---|---|
-| 漏检率 \(P_M\)（miss probability） | \(P(\text{判 }H_0\mid H_1)\) | 有目标却漏掉 |
-| 虚警率 \(P_{FA}\)（false alarm probability） | \(P(\text{判 }H_1\mid H_0)\) | 没目标却报警 |
-| 特异度 specificity（true negative rate） | \(P(\text{判 }H_0\mid H_0)=1-P_{FA}\) | 没病时判“没病”的能力 |
-| 灵敏度 / 召回率 / 检测率 \(P_D\)（sensitivity / recall / detection） | \(P(\text{判 }H_1\mid H_1)=1-P_M\) | 有病时判“有病”的能力 |
-| 精确率 precision / PPV（positive predictive value） | \(P(H_1\text{ 为真}\mid \text{判 }H_1)\) | 报警的人里，真有多少有病 |
+| 漏检率 $P_M$（miss probability） | $P(\text{判 }H_0\mid H_1)$ | 有目标却漏掉 |
+| 虚警率 $P_{FA}$（false alarm probability） | $P(\text{判 }H_1\mid H_0)$ | 没目标却报警 |
+| 特异度 specificity（true negative rate） | $P(\text{判 }H_0\mid H_0)=1-P_{FA}$ | 没病时判“没病”的能力 |
+| 灵敏度 / 召回率 / 检测率 $P_D$（sensitivity / recall / detection） | $P(\text{判 }H_1\mid H_1)=1-P_M$ | 有病时判“有病”的能力 |
+| 精确率 precision / PPV（positive predictive value） | $P(H_1\text{ 为真}\mid \text{判 }H_1)$ | 报警的人里，真有多少有病 |
 
 精确率用贝叶斯公式展开：
 
@@ -297,7 +297,7 @@ P(H_1\mid \text{判 }H_1)
 \frac{P_D P_1}{P_D P_1+P_{FA}P_0}.
 $$
 
-这条公式很重要：**精确率不仅取决于检测器本身（\(P_D,P_{FA}\)），还取决于先验 \(P_0,P_1\)。** 即使 \(P_D\) 很高，如果疾病在人群中很罕见（\(P_1\) 很小），精确率也可能很低。这是“基础率谬误”的数学版本。
+这条公式很重要：**精确率不仅取决于检测器本身（$P_D,P_{FA}$），还取决于先验 $P_0,P_1$。** 即使 $P_D$ 很高，如果疾病在人群中很罕见（$P_1$ 很小），精确率也可能很低。这是“基础率谬误”的数学版本。
 
 ---
 
@@ -331,7 +331,7 @@ E[\text{cost}]
 P_0P_{FA}C_{FA}+P_1P_MC_M.
 $$
 
-如果 \(C_{FA}=C_M\)，那么
+如果 $C_{FA}=C_M$，那么
 
 $$
 E[\text{cost}]
@@ -357,10 +357,10 @@ $$
 
 | 代价 | 含义 |
 |---|---|
-| \(C_{00}\) | 判 \(H_0\)，实际 \(H_0\)（正确） |
-| \(C_{01}\) | 判 \(H_0\)，实际 \(H_1\)（漏检） |
-| \(C_{10}\) | 判 \(H_1\)，实际 \(H_0\)（虚警） |
-| \(C_{11}\) | 判 \(H_1\)，实际 \(H_1\)（正确） |
+| $C_{00}$ | 判 $H_0$，实际 $H_0$（正确） |
+| $C_{01}$ | 判 $H_0$，实际 $H_1$（漏检） |
+| $C_{10}$ | 判 $H_1$，实际 $H_0$（虚警） |
+| $C_{11}$ | 判 $H_1$，实际 $H_1$（正确） |
 
 期望代价可以写成
 
@@ -380,13 +380,13 @@ P_1P_M(C_{01}-C_{11}).
 \end{aligned}
 $$
 
-前两项 \(P_0C_{00}+P_1C_{11}\) 是“正确决策的 baseline 代价”，**不依赖决策区域 \(R\)**。真正能通过设计决策规则改变的是后两项：
+前两项 $P_0C_{00}+P_1C_{11}$ 是“正确决策的 baseline 代价”，**不依赖决策区域 $R$**。真正能通过设计决策规则改变的是后两项：
 
 $$
 P_0P_{FA}(C_{10}-C_{00})+P_1P_M(C_{01}-C_{11}).
 $$
 
-因此，最优决策只需要最小化这两项。注意这里出现的是**增量代价** \(C_{10}-C_{00}\) 和 \(C_{01}-C_{11}\)，而不是 \(C_{10}\) 和 \(C_{01}\) 本身。
+因此，最优决策只需要最小化这两项。注意这里出现的是**增量代价** $C_{10}-C_{00}$ 和 $C_{01}-C_{11}$，而不是 $C_{10}$ 和 $C_{01}$ 本身。
 
 ---
 
@@ -396,9 +396,9 @@ $$
 
 | 规则 | 优化的对象 | 判决式 | 退化关系 |
 |---|---|---|---|
-| **ML**（最大似然） | \(\max_i f_X(x\mid H_i)\) | \(\Lambda(x)\gtrless 1\) | — |
-| **MAP**（最大后验） | \(\max_i P(H_i\mid x)\) | \(\Lambda(x)\gtrless \dfrac{P_0}{P_1}\) | 先验相等 \(P_0=P_1\) 时，MAP = ML |
-| **Bayes**（最小期望代价） | \(\min E[C]\) | \(\Lambda(x)\gtrless \dfrac{C_{10}-C_{00}}{C_{01}-C_{11}}\cdot\dfrac{P_0}{P_1}\) | 均匀代价时，Bayes = MAP |
+| **ML**（最大似然） | $\max_i f_X(x\mid H_i)$ | $\Lambda(x)\gtrless 1$ | — |
+| **MAP**（最大后验） | $\max_i P(H_i\mid x)$ | $\Lambda(x)\gtrless \dfrac{P_0}{P_1}$ | 先验相等 $P_0=P_1$ 时，MAP = ML |
+| **Bayes**（最小期望代价） | $\min E[C]$ | $\Lambda(x)\gtrless \dfrac{C_{10}-C_{00}}{C_{01}-C_{11}}\cdot\dfrac{P_0}{P_1}$ | 均匀代价时，Bayes = MAP |
 
 其中
 
@@ -406,7 +406,7 @@ $$
 \Lambda(x)=\frac{f_X(x\mid H_1)}{f_X(x\mid H_0)}
 $$
 
-是**似然比**（材料一记作 \(L(x)\)）。
+是**似然比**（材料一记作 $L(x)$）。
 
 三者的关系可以记成：
 
@@ -422,9 +422,9 @@ $$
 - **MAP** 是 Bayes 在“正确决策零代价、两类错误等代价”下的特例。
 - **ML** 是 MAP 在“先验相等”下的特例。
 
-> **术语提醒**：这里的“Bayes 检验 / Bayes 规则”指的是**最小化期望代价的决策规则**，不是“贝叶斯定理”本身。贝叶斯定理只是用来把后验 \(P(H_i\mid x)\) 写成“先验 × 似然”的形式。
+> **术语提醒**：这里的“Bayes 检验 / Bayes 规则”指的是**最小化期望代价的决策规则**，不是“贝叶斯定理”本身。贝叶斯定理只是用来把后验 $P(H_i\mid x)$ 写成“先验 × 似然”的形式。
 
-> 注意：这里的“\(\supset\)”不是严格集合包含，而是“Bayes 在特定条件下退化为 MAP，MAP 在特定条件下退化为 ML”的意思。
+> 注意：这里的“$\supset$”不是严格集合包含，而是“Bayes 在特定条件下退化为 MAP，MAP 在特定条件下退化为 ML”的意思。
 
 ![材料一第 14 页：ML / MAP / Bayes 三种决策规则的对照](/images/hypothesis-testing-and-estimation/doc1_p14_bayes_rule.png)
 
@@ -469,7 +469,7 @@ $$
 \right).
 $$
 
-**ML 规则（Maximum Likelihood Decision Rule）**：令 \(\Lambda(x)\gtrless 1\)，等价于
+**ML 规则（Maximum Likelihood Decision Rule）**：令 $\Lambda(x)\gtrless 1$，等价于
 
 $$
 (x-\theta_1)^2 \lessgtr (x-\theta_0)^2,
@@ -489,7 +489,7 @@ $$
 
 也就是两个高斯密度的交点。
 
-**MAP 规则（Maximum A Posteriori Decision Rule）**：令 \(\Lambda(x)\gtrless P_0/P_1\)，取对数并化简：
+**MAP 规则（Maximum A Posteriori Decision Rule）**：令 $\Lambda(x)\gtrless P_0/P_1$，取对数并化简：
 
 $$
 -\frac{(x-\theta_1)^2-(x-\theta_0)^2}{2\sigma^2}
@@ -528,27 +528,27 @@ $$
 
 **怎么读这个阈值？**
 
-- 第一项 \(\dfrac{\theta_0+\theta_1}{2}\) 是 ML 阈值，只看数据。
+- 第一项 $\dfrac{\theta_0+\theta_1}{2}$ 是 ML 阈值，只看数据。
 - 第二项是“先验修正”：
-  - 若 \(P_0>P_1\)，\(\ln(P_0/P_1)>0\)，阈值右移，更倾向判 \(H_0\)。
-  - 若 \(P_0<P_1\)，\(\ln(P_0/P_1)<0\)，阈值左移，更倾向判 \(H_1\)。
-  - 若 \(P_0=P_1\)，修正项为 0，MAP 退化为 ML。
-- 系数 \(\dfrac{\sigma^2}{\theta_1-\theta_0}\) 可以理解为一种“噪声/信号”的比值：噪声越大、两个假设越接近，先验对阈值的影响越大；反之，数据本身很有区分度时，先验的影响就小。
+  - 若 $P_0>P_1$，$\ln(P_0/P_1)>0$，阈值右移，更倾向判 $H_0$。
+  - 若 $P_0<P_1$，$\ln(P_0/P_1)<0$，阈值左移，更倾向判 $H_1$。
+  - 若 $P_0=P_1$，修正项为 0，MAP 退化为 ML。
+- 系数 $\dfrac{\sigma^2}{\theta_1-\theta_0}$ 可以理解为一种“噪声/信号”的比值：噪声越大、两个假设越接近，先验对阈值的影响越大；反之，数据本身很有区分度时，先验的影响就小。
 
 第 12 页的 Remarks 正是在强调这一点：
 
-- \(P_0=P_1=\frac12\)：\(\tau_{MAP}=\tau_{ML}\)，MAP = ML。
-- \(P_0>P_1\)：阈值右移，MAP 更偏向 \(H_0\)。
-- \(P_0<P_1\)：阈值左移，MAP 更偏向 \(H_1\)。
-- \(\sigma^2/(\theta_1-\theta_0)\) 越大，阈值越依赖先验，越不依赖观测。
+- $P_0=P_1=\frac12$：$\tau_{MAP}=\tau_{ML}$，MAP = ML。
+- $P_0>P_1$：阈值右移，MAP 更偏向 $H_0$。
+- $P_0<P_1$：阈值左移，MAP 更偏向 $H_1$。
+- $\sigma^2/(\theta_1-\theta_0)$ 越大，阈值越依赖先验，越不依赖观测。
 
 ---
 
 ### 2.7 贝叶斯决策规则的证明（第 16 页）
 
-这部分是理解文末总结的关键。证明的目标是：**最小化期望代价的决策区域 \(R\) 应该取成什么样的形式？**
+这部分是理解文末总结的关键。证明的目标是：**最小化期望代价的决策区域 $R$ 应该取成什么样的形式？**
 
-令 \(R\) 是“判 \(H_1\)”的观测集合，\(R^c\) 是“判 \(H_0\)”的集合。忽略不依赖 \(R\) 的常数项，需要最小化
+令 $R$ 是“判 $H_1$”的观测集合，$R^c$ 是“判 $H_0$”的集合。忽略不依赖 $R$ 的常数项，需要最小化
 
 $$
 J(R)
@@ -558,7 +558,7 @@ P_0(C_{10}-C_{00})\int_R f_X(x\mid H_0)\,dx
 P_1(C_{01}-C_{11})\int_{R^c} f_X(x\mid H_1)\,dx.
 $$
 
-把第二个积分写成“全空间减去 \(R\)”：
+把第二个积分写成“全空间减去 $R$”：
 
 $$
 J(R)
@@ -578,10 +578,10 @@ P_1(C_{01}-C_{11})f_X(x\mid H_1)
 \,dx.
 $$
 
-对每个 \(x\) 独立地选择“放进 \(R\)”还是“不放进 \(R\)”：
+对每个 $x$ 独立地选择“放进 $R$”还是“不放进 $R$”：
 
-- 如果“判 \(H_1\)”的代价密度更小，就把 \(x\) 放进 \(R\)；
-- 否则不放进 \(R\)。
+- 如果“判 $H_1$”的代价密度更小，就把 $x$ 放进 $R$；
+- 否则不放进 $R$。
 
 也就是
 
@@ -601,7 +601,7 @@ $$
 \frac{C_{10}-C_{00}}{C_{01}-C_{11}}\cdot\frac{P_0}{P_1}.
 $$
 
-这就是一般的贝叶斯判决规则。**它的直观是：在每一个观测点 \(x\) 上，比较“判 H1 的代价”与“判 H0 的代价”，谁小选谁。**
+这就是一般的贝叶斯判决规则。**它的直观是：在每一个观测点 $x$ 上，比较“判 H1 的代价”与“判 H0 的代价”，谁小选谁。**
 
 ---
 
@@ -610,7 +610,7 @@ $$
 第 15 页文末的原文是：
 
 > **In summary:**  
-> 1. Bayes Test under uniform costs \(\equiv\) MAP Test  
+> 1. Bayes Test under uniform costs $\equiv$ MAP Test  
 > 2. Bayes Test under uniform costs minimizes prob. of error  
 > 3. MAP decision rule minimizes the probability of error
 
@@ -618,7 +618,7 @@ $$
 
 | 原文结论 | 对应小节 |
 |---|---|
-| 1. Bayes under uniform costs \(\equiv\) MAP | 2.8.1 + 2.8.2 |
+| 1. Bayes under uniform costs $\equiv$ MAP | 2.8.1 + 2.8.2 |
 | 2. Bayes under uniform costs minimizes prob. of error | 2.8.3 |
 | 3. MAP minimizes the probability of error | 2.8.3 + 2.8.4 |
 
@@ -642,12 +642,12 @@ $$
 
 | 因子 | 含义 | 变大时的影响 |
 |---|---|---|
-| \(\Lambda(x)\) | 数据提供的“H1 相对 H0”的似然比（likelihood ratio） | 越大越支持 \(H_1\) |
-| \(C_{10}-C_{00}\) | 虚警的**增量代价（incremental cost of false alarm）**：判 H1 比正确判 H0 多花多少 | 越大，阈值越高，越不敢判 \(H_1\) |
-| \(C_{01}-C_{11}\) | 漏检的**增量代价（incremental cost of a miss）**：判 H0 比正确判 H1 多花多少 | 越大，阈值越低，越倾向判 \(H_1\) |
-| \(P_0/P_1\) | 先验 odds（prior odds）：H0 相对 H1 的先验可能性 | 越大，阈值越高，越倾向判 \(H_0\) |
+| $\Lambda(x)$ | 数据提供的“H1 相对 H0”的似然比（likelihood ratio） | 越大越支持 $H_1$ |
+| $C_{10}-C_{00}$ | 虚警的**增量代价（incremental cost of false alarm）**：判 H1 比正确判 H0 多花多少 | 越大，阈值越高，越不敢判 $H_1$ |
+| $C_{01}-C_{11}$ | 漏检的**增量代价（incremental cost of a miss）**：判 H0 比正确判 H1 多花多少 | 越大，阈值越低，越倾向判 $H_1$ |
+| $P_0/P_1$ | 先验 odds（prior odds）：H0 相对 H1 的先验可能性 | 越大，阈值越高，越倾向判 $H_0$ |
 
-> 这里默认 \(C_{10}>C_{00}\)、\(C_{01}>C_{11}\)，即“判错”比“判对”更贵，两个增量代价为正；否则阈值可能为负，最优规则会退化成“总是判某一类”。第 14 页也明确写了“assuming \(C_{01}>C_{11}\)”。
+> 这里默认 $C_{10}>C_{00}$、$C_{01}>C_{11}$，即“判错”比“判对”更贵，两个增量代价为正；否则阈值可能为负，最优规则会退化成“总是判某一类”。第 14 页也明确写了“assuming $C_{01}>C_{11}$”。
 
 可以记成一句：
 
@@ -661,7 +661,7 @@ $$
 
 **几个特例：**
 
-1. **正确决策零代价**：\(C_{00}=C_{11}=0\)。令 \(C_{10}=C_{FA}\)，\(C_{01}=C_M\)，则
+1. **正确决策零代价**：$C_{00}=C_{11}=0$。令 $C_{10}=C_{FA}$，$C_{01}=C_M$，则
 
 $$
 \Lambda(x)
@@ -679,7 +679,7 @@ L(x)
 \frac{C_{FA}P_0}{C_M P_1}.
 $$
 
-2. **均匀代价**：\(C_{00}=C_{11}=0\)，且 \(C_{10}=C_{01}=1\)，则
+2. **均匀代价**：$C_{00}=C_{11}=0$，且 $C_{10}=C_{01}=1$，则
 
 $$
 \Lambda(x)
@@ -689,9 +689,9 @@ $$
 
 这就是下一条要讲的“Bayes = MAP”。
 
-3. **先验相等**：\(P_0=P_1\)，则 \(P_0/P_1=1\)。若再叠加均匀代价，就得到 ML 规则 \(\Lambda(x)\gtrless 1\)。
+3. **先验相等**：$P_0=P_1$，则 $P_0/P_1=1$。若再叠加均匀代价，就得到 ML 规则 $\Lambda(x)\gtrless 1$。
 
-> **易错点**：一般公式里的代价比是 \(\dfrac{C_{10}-C_{00}}{C_{01}-C_{11}}\)，不是 \(\dfrac{C_{10}}{C_{01}}\)。只有当正确决策的代价为零时，二者才相同。这个“增量代价”是第 13–14 页推导的核心。
+> **易错点**：一般公式里的代价比是 $\dfrac{C_{10}-C_{00}}{C_{01}-C_{11}}$，不是 $\dfrac{C_{10}}{C_{01}}$。只有当正确决策的代价为零时，二者才相同。这个“增量代价”是第 13–14 页推导的核心。
 
 #### 2.8.2 公式二：均匀代价下 Bayes = MAP（Uniform Cost）
 
@@ -733,7 +733,7 @@ $$
 \Lambda(x)\cdot\frac{P_1}{P_0}.
 $$
 
-比较 \(\Lambda(x)\) 与 \(P_0/P_1\)，等价于比较后验 odds 与 1：
+比较 $\Lambda(x)$ 与 $P_0/P_1$，等价于比较后验 odds 与 1：
 
 $$
 \Lambda(x)\gtrless \frac{P_0}{P_1}
@@ -743,7 +743,7 @@ $$
 P(H_1\mid x)\gtrless P(H_0\mid x).
 $$
 
-这正是 **MAP（最大后验）规则**：在给定观测 \(x\) 后，选后验概率更大的那个假设。
+这正是 **MAP（最大后验）规则**：在给定观测 $x$ 后，选后验概率更大的那个假设。
 
 所以第一条总结成立：
 
@@ -755,7 +755,7 @@ $$
 }
 $$
 
-这里的“等价”是指：**对几乎所有的 \(x\)，两种规则给出相同的判决**；在阈值点上可能有 ties（平局），但连续分布下 ties 的概率为零，离散分布下需要约定 tie-breaking。
+这里的“等价”是指：**对几乎所有的 $x$，两种规则给出相同的判决**；在阈值点上可能有 ties（平局），但连续分布下 ties 的概率为零，离散分布下需要约定 tie-breaking。
 
 **为什么不是 ML？**
 
@@ -765,9 +765,9 @@ $$
 \text{MAP 比较的是 } f_X(x\mid H_i)P_i,
 $$
 
-而 ML 只比较 \(f_X(x\mid H_i)\)。只有当 \(P_0=P_1\) 时，先验因子才抵消，MAP 才退化为 ML。**均匀代价只去掉了代价差异，并没有去掉先验差异。**
+而 ML 只比较 $f_X(x\mid H_i)$。只有当 $P_0=P_1$ 时，先验因子才抵消，MAP 才退化为 ML。**均匀代价只去掉了代价差异，并没有去掉先验差异。**
 
-#### 2.8.3 公式三：均匀代价下 \(E[\text{cost}]=P(\text{error})\)（Expected Cost = Probability of Error）
+#### 2.8.3 公式三：均匀代价下 $E[\text{cost}]=P(\text{error})$（Expected Cost = Probability of Error）
 
 这是三条总结里最容易被“看一眼就过”的一条，但它是整个结论的定量核心。
 
@@ -785,7 +785,7 @@ P_1P_M(C_{01}-C_{11}).
 \end{aligned}
 $$
 
-代入均匀代价 \(C_{00}=C_{11}=0\)，\(C_{10}=C_{01}=1\)：
+代入均匀代价 $C_{00}=C_{11}=0$，$C_{10}=C_{01}=1$：
 
 $$
 \begin{aligned}
@@ -830,8 +830,8 @@ $$
 这不是近似，也不是“某个特殊数据集上成立”，而是**对任意决策规则都成立的恒等式**。它的含义是：
 
 - 均匀代价下，期望代价的“单位”就是错误概率；
-- 最小化 \(E[\text{cost}]\) 与最小化 \(P(\text{error})\) 是同一个优化问题；
-- 因此，Bayes 规则（最小化 \(E[\text{cost}]\)）在这个代价设定下，自动就是最小错误率规则。
+- 最小化 $E[\text{cost}]$ 与最小化 $P(\text{error})$ 是同一个优化问题；
+- 因此，Bayes 规则（最小化 $E[\text{cost}]$）在这个代价设定下，自动就是最小错误率规则。
 
 再结合公式二：
 
@@ -869,16 +869,16 @@ $$
 
 | 原文结论 | 数学含义 | 为什么成立 |
 |---|---|---|
-| 1. Bayes under uniform costs \(\equiv\) MAP | 判决式都化为 \(\Lambda(x)\gtrless P_0/P_1\) | 均匀代价把代价比变成 1，只剩先验比 |
-| 2. Bayes under uniform costs minimizes prob. of error | \(\min E[C]=\min P(\text{error})\) | 均匀代价下 \(E[C]\) 与 \(P(\text{error})\) 是同一个量 |
+| 1. Bayes under uniform costs $\equiv$ MAP | 判决式都化为 $\Lambda(x)\gtrless P_0/P_1$ | 均匀代价把代价比变成 1，只剩先验比 |
+| 2. Bayes under uniform costs minimizes prob. of error | $\min E[C]=\min P(\text{error})$ | 均匀代价下 $E[C]$ 与 $P(\text{error})$ 是同一个量 |
 | 3. MAP minimizes the probability of error | MAP 是 0-1 代价下的 Bayes 最优规则 | 由 1 和 2 直接推出 |
 
 **逻辑顺序很重要**：
 
-1. 先有一般的 Bayes 风险 \(E[C]\)；
+1. 先有一般的 Bayes 风险 $E[C]$；
 2. 把代价设成均匀，得到 Bayes = MAP；
-3. 发现此时 \(E[C]\) 恰好等于 \(P(\text{error})\)；
-4. 所以 MAP 最小化 \(P(\text{error})\)。
+3. 发现此时 $E[C]$ 恰好等于 $P(\text{error})$；
+4. 所以 MAP 最小化 $P(\text{error})$。
 
 不是“因为 MAP 直观，所以它最优”，而是“因为它在均匀代价下就是 Bayes 规则，而 Bayes 规则最小化期望代价”。
 
@@ -891,19 +891,19 @@ $$
 #### 2.8.5 五个常见误区
 
 1. **把“均匀代价”当成“均匀先验”**  
-   均匀代价说的是 \(C_{10}=C_{01}=1\)，不是 \(P_0=P_1\)。前者让 Bayes 退化为 MAP，后者才让 MAP 退化为 ML。
+   均匀代价说的是 $C_{10}=C_{01}=1$，不是 $P_0=P_1$。前者让 Bayes 退化为 MAP，后者才让 MAP 退化为 ML。
 
 2. **认为 MAP 一定等于 ML**  
    只有当先验相等（或先验为常数）时，MAP 才等于 ML。先验不等时，MAP 会把先验偏置加进去。
 
 3. **认为 Bayes 一定等于 MAP**  
-   Bayes 是一般的最小期望代价规则；只有当代价是均匀 0-1 代价时，它才等于 MAP。若虚警和漏检代价不同，Bayes 阈值会偏离 \(P_0/P_1\)。
+   Bayes 是一般的最小期望代价规则；只有当代价是均匀 0-1 代价时，它才等于 MAP。若虚警和漏检代价不同，Bayes 阈值会偏离 $P_0/P_1$。
 
-4. **代价比写成 \(C_{10}/C_{01}\)**  
-   一般情形下应是增量比 \(\dfrac{C_{10}-C_{00}}{C_{01}-C_{11}}\)。只有当 \(C_{00}=C_{11}=0\) 时，才简化为 \(C_{10}/C_{01}\)。
+4. **代价比写成 $C_{10}/C_{01}$**  
+   一般情形下应是增量比 $\dfrac{C_{10}-C_{00}}{C_{01}-C_{11}}$。只有当 $C_{00}=C_{11}=0$ 时，才简化为 $C_{10}/C_{01}$。
 
-5. **把 \(P(\text{error})\) 写成 \(P_{FA}+P_M\)**  
-   正确写法是 \(P_0P_{FA}+P_1P_M\)。\(P_{FA}\) 和 \(P_M\) 是条件概率，必须用先验加权。只有 \(P_0=P_1=1/2\) 时，才有 \(P(\text{error})=\frac12(P_{FA}+P_M)\)。
+5. **把 $P(\text{error})$ 写成 $P_{FA}+P_M$**  
+   正确写法是 $P_0P_{FA}+P_1P_M$。$P_{FA}$ 和 $P_M$ 是条件概率，必须用先验加权。只有 $P_0=P_1=1/2$ 时，才有 $P(\text{error})=\frac12(P_{FA}+P_M)$。
 
 ---
 
@@ -923,9 +923,9 @@ $$
 | 10 | MAP；Bayes 规则；ML/MAP 对照表 |
 | 11 | 高斯 MAP 阈值；先验修正项 |
 | 12 | Remarks：先验、噪声/信号比对阈值的影响 |
-| 13 | 完整四代价模型；\(C_{ij}\) |
+| 13 | 完整四代价模型；$C_{ij}$ |
 | 14 | 贝叶斯决策规则；ML/MAP/Bayes 三列对照 |
-| 15 | 均匀代价；\(E[C]=P(\text{error})\)；文末三条总结 |
+| 15 | 均匀代价；$E[C]=P(\text{error})$；文末三条总结 |
 | 16 | 贝叶斯决策规则的证明 |
 
 ---
@@ -944,11 +944,11 @@ $$
 
 第 2 页给出 p 值的定义：
 
-> 对一类虚警率为 \(\alpha\) 的检验，观测到 \(X=x\) 后，p 值是“使检验判 \(H_1\)”的最小 \(\alpha\)。
+> 对一类虚警率为 $\alpha$ 的检验，观测到 $X=x$ 后，p 值是“使检验判 $H_1$”的最小 $\alpha$。
 
 更操作化的定义（第 3 页）：
 
-如果检验具有形式（\(T(x)\): test statistic；\(\tau\): threshold）
+如果检验具有形式（$T(x)$: test statistic；$\tau$: threshold）
 
 $$
 \delta(x)=
@@ -958,7 +958,7 @@ H_0, & T(x)<\tau,
 \end{cases}
 $$
 
-那么观测 \(z\) 的 p 值（p-value）是
+那么观测 $z$ 的 p 值（p-value）是
 
 $$
 \boxed{
@@ -966,15 +966,15 @@ p(z)=P\big(T(X)\ge T(z)\mid H_0\big)
 }
 $$
 
-也就是：**在 \(H_0\) 下，观测到“和 \(z\) 一样极端或更极端”的数据的概率。**
+也就是：**在 $H_0$ 下，观测到“和 $z$ 一样极端或更极端”的数据的概率。**
 
-“更极端”的方向要由 \(H_1\) 决定。如果 \(H_1\) 是 \(\theta>\theta_0\)，那么“更极端”就是 \(T(X)\) 更大；如果 \(H_1\) 是 \(\theta<\theta_0\)，方向就反过来。
+“更极端”的方向要由 $H_1$ 决定。如果 $H_1$ 是 $\theta>\theta_0$，那么“更极端”就是 $T(X)$ 更大；如果 $H_1$ 是 $\theta<\theta_0$，方向就反过来。
 
 **硬币例子**（第 3–4 页）：
 
-- \(H_0:\theta=\frac12\)，\(H_1:\theta>\frac12\)。
-- 5 次全是正面：\(p=(\frac12)^5=\frac1{32}\approx 0.031\)。
-- 4 次或 5 次正面：\(p=\frac1{32}+\binom51\frac1{32}=\frac6{32}\approx 0.188\)。
+- $H_0:\theta=\frac12$，$H_1:\theta>\frac12$。
+- 5 次全是正面：$p=(\frac12)^5=\frac1{32}\approx 0.031$。
+- 4 次或 5 次正面：$p=\frac1{32}+\binom51\frac1{32}=\frac6{32}\approx 0.188$。
 
 注意第二个例子：p 值不是“恰好 4 次正面”的概率，而是“**4 次或更多**正面”的概率。这就是“更极端”的含义。
 
@@ -982,12 +982,12 @@ $$
 
 | p 值范围 | 证据强度 |
 |---|---|
-| \(p<0.01\) | very strong evidence |
-| \(0.01<p<0.05\) | strong evidence |
-| \(0.05<p<0.1\) | weak evidence |
-| \(p>0.1\) | little to no evidence |
+| $p<0.01$ | very strong evidence |
+| $0.01<p<0.05$ | strong evidence |
+| $0.05<p<0.1$ | weak evidence |
+| $p>0.1$ | little to no evidence |
 
-> **重要提醒**：p 值不是 \(P(H_0\mid \text{data})\)。它是在 \(H_0\) 为真的前提下，数据（或更极端数据）出现的概率。把 p 值当成“H0 为真的概率”是常见的误解。
+> **重要提醒**：p 值不是 $P(H_0\mid \text{data})$。它是在 $H_0$ 为真的前提下，数据（或更极端数据）出现的概率。把 p 值当成“H0 为真的概率”是常见的误解。
 
 ### 3.2 参数推断的三类问题（Parametric Inference Problems）
 
@@ -1001,8 +1001,8 @@ Parametric Inference Problems
 ```
 
 - **假设检验**：在离散假设之间做选择。
-- **点估计**：给 \(\theta\) 一个数 \(\hat\theta\)。
-- **区间估计**：给 \(\theta\) 一个区间 \(C_n=(a_n,b_n)\)，使得
+- **点估计**：给 $\theta$ 一个数 $\hat\theta$。
+- **区间估计**：给 $\theta$ 一个区间 $C_n=(a_n,b_n)$，使得
 
 $$
 P(\theta\in C_n)\ge 1-\alpha.
@@ -1022,8 +1022,8 @@ E[\hat\theta-\theta]
 E[\hat\theta]-\theta.
 $$
 
-- \(\hat\theta\) 依赖数据，所以是随机变量。
-- 若 \(\operatorname{bias}(\hat\theta)=0\)，称 \(\hat\theta\) 是**无偏估计（unbiased estimator）**。
+- $\hat\theta$ 依赖数据，所以是随机变量。
+- 若 $\operatorname{bias}(\hat\theta)=0$，称 $\hat\theta$ 是**无偏估计（unbiased estimator）**。
 - 偏差衡量“平均而言，估计值偏离真值多少”。
 
 **标准误（Standard Error）**：
@@ -1034,7 +1034,7 @@ $$
 \sqrt{\operatorname{Var}(\hat\theta-\theta)}.
 $$
 
-在频率派设定下，\(\theta\) 是固定但未知的常数，不是随机变量，所以
+在频率派设定下，$\theta$ 是固定但未知的常数，不是随机变量，所以
 
 $$
 \operatorname{Var}(\hat\theta-\theta)=\operatorname{Var}(\hat\theta),
@@ -1069,7 +1069,7 @@ $$
 
 第 6–9 页讲 MLE。
 
-**似然函数（Likelihood Function）**：设 \(X_1,\dots,X_n\) 独立同分布，密度为 \(f_X(x\mid\theta)\)，观测到 \(\vec x=(x_1,\dots,x_n)\)，则
+**似然函数（Likelihood Function）**：设 $X_1,\dots,X_n$ 独立同分布，密度为 $f_X(x\mid\theta)$，观测到 $\vec x=(x_1,\dots,x_n)$，则
 
 $$
 L(\theta;\vec x)
@@ -1103,7 +1103,7 @@ $$
 
 **MLE 的性质**（第 7 页）：
 
-1. **一致性（consistency）**：\(\hat\theta_n\xrightarrow{p}\theta\)。
+1. **一致性（consistency）**：$\hat\theta_n\xrightarrow{p}\theta$。
 2. **渐近正态性（asymptotic normality）**：
 
 $$
@@ -1159,11 +1159,11 @@ $$
 }
 $$
 
-也就是样本中正面的比例。这里 \(S\) 是**充分统计量（sufficient statistic）**：只要知道 \(S\)，不需要知道每次具体是正面还是反面，就能算出 MLE。
+也就是样本中正面的比例。这里 $S$ 是**充分统计量（sufficient statistic）**：只要知道 $S$，不需要知道每次具体是正面还是反面，就能算出 MLE。
 
 ### 3.5 贝叶斯估计（Bayesian Estimation）：从“最大似然”到“后验”
 
-第 10–12 页把 \(\theta\) 看成随机变量，并给出先验 \(f_\Theta(\theta)\)。
+第 10–12 页把 $\theta$ 看成随机变量，并给出先验 $f_\Theta(\theta)$。
 
 **后验（Posterior Distribution）**：
 
@@ -1190,7 +1190,7 @@ $$
 
 MAP 看的是后验分布的**众数（mode）**。
 
-**一般的贝叶斯估计（General Bayesian Estimator）**：给定代价函数 \(C(\hat\theta,\theta)\)，选择
+**一般的贝叶斯估计（General Bayesian Estimator）**：给定代价函数 $C(\hat\theta,\theta)$，选择
 
 $$
 \boxed{
@@ -1205,9 +1205,9 @@ $$
 
 | 估计器 | 代价函数 | 最优解 | 后验分布的位置 |
 |---|---|---|---|
-| **MAP** | 0-1 型代价 | \(\arg\max_\theta f_{\Theta\mid\vec X}(\theta\mid\vec x)\) | 众数 mode |
-| **MMSE** | \(C(\hat\theta,\theta)=(\hat\theta-\theta)^2\) | \(E[\Theta\mid\vec X=\vec x]\) | 均值 mean |
-| **MAE** | \(C(\hat\theta,\theta)=\lvert\hat\theta-\theta\rvert\) | 后验中位数 | 中位数 median |
+| **MAP** | 0-1 型代价 | $\arg\max_\theta f_{\Theta\mid\vec X}(\theta\mid\vec x)$ | 众数 mode |
+| **MMSE** | $C(\hat\theta,\theta)=(\hat\theta-\theta)^2$ | $E[\Theta\mid\vec X=\vec x]$ | 均值 mean |
+| **MAE** | $C(\hat\theta,\theta)=\lvert\hat\theta-\theta\rvert$ | 后验中位数 | 中位数 median |
 
 其中：
 
@@ -1239,8 +1239,8 @@ $$
 \arg\max_\theta L(\theta;\vec x)f_\Theta(\theta).
 $$
 
-- MLE 只最大化 \(L(\theta;\vec x)\)。
-- MAP 还要乘上先验 \(f_\Theta(\theta)\)。
+- MLE 只最大化 $L(\theta;\vec x)$。
+- MAP 还要乘上先验 $f_\Theta(\theta)$。
 - 如果先验是均匀分布（在参数空间上为常数），那么 MAP 退化为 MLE。
 - 先验不是均匀时，MAP 会被先验“拉”向先验概率高的区域。
 
@@ -1248,14 +1248,14 @@ $$
 
 第 12–14 页用 Hoeffding 不等式构造置信区间。
 
-**Hoeffding 不等式（Hoeffding Inequality）**：设 \(X_1,X_2,\dots\) 独立，且 \(0\le X_i\le 1\)，令
+**Hoeffding 不等式（Hoeffding Inequality）**：设 $X_1,X_2,\dots$ 独立，且 $0\le X_i\le 1$，令
 
 $$
 S_n=\sum_{i=1}^n X_i,\qquad
 \bar S_n=\frac{S_n}{n}.
 $$
 
-则对任意 \(\epsilon>0\)，
+则对任意 $\epsilon>0$，
 
 $$
 \boxed{
@@ -1265,7 +1265,7 @@ P\big(\lvert \bar S_n-E[\bar S_n]\rvert>\epsilon\big)
 }
 $$
 
-**伯努利例子**：\(X_i\in\{0,1\}\)，\(P(X_i=1)=\theta\)，则 \(E[\bar S]=\theta\)，于是
+**伯努利例子**：$X_i\in\{0,1\}$，$P(X_i=1)=\theta$，则 $E[\bar S]=\theta$，于是
 
 $$
 P\big(\lvert \bar S-\theta\rvert>\epsilon\big)
@@ -1285,7 +1285,7 @@ $$
 \theta\in[\bar S-\epsilon,\ \bar S+\epsilon].
 $$
 
-这就是一个**置信区间（Confidence Interval）**，宽度为 \(2\epsilon\)，中心是样本比例 \(\bar S\)。
+这就是一个**置信区间（Confidence Interval）**，宽度为 $2\epsilon$，中心是样本比例 $\bar S$。
 
 **把它写成置信水平的形式**：令
 
@@ -1293,15 +1293,15 @@ $$
 \delta=e^{-2n\epsilon^2},
 $$
 
-则置信水平为 \(1-2\delta\)（失败概率为 \(2\delta\)，每侧 \(\delta\)），且
+则置信水平为 $1-2\delta$（失败概率为 $2\delta$，每侧 $\delta$），且
 
 $$
 \epsilon=\sqrt{\frac{\log(1/\delta)}{2n}}.
 $$
 
-例如，要 \(99\%\) 置信，则 \(2\delta=0.01\)，\(\delta=0.005\)。第 14 页给出：
+例如，要 $99\%$ 置信，则 $2\delta=0.01$，$\delta=0.005$。第 14 页给出：
 
-| 样本量 \(n\) | 99% 置信下的 \(\epsilon\) |
+| 样本量 $n$ | 99% 置信下的 $\epsilon$ |
 |---|---|
 | 100 | 0.163 |
 | 1000 | 0.05 |
@@ -1338,12 +1338,12 @@ $$
 
 | 维度 | 材料一：假设检验 | 材料二：参数估计 |
 |---|---|---|
-| 未知量 | 离散假设 \(H_i\) | 连续参数 \(\theta\) |
-| 先验 | \(P(H_i)\) | \(f_\Theta(\theta)\) |
-| 似然 | \(f_X(x\mid H_i)\) | \(f_{\vec X}(\vec x\mid\theta)\) |
-| 后验 | \(P(H_i\mid x)\) | \(f_{\Theta\mid\vec X}(\theta\mid\vec x)\) |
-| 动作 | 判 \(H_0\) / \(H_1\) | 给出 \(\hat\theta\) |
-| 代价 | 代价矩阵 \(C_{ij}\) | 代价函数 \(C(\hat\theta,\theta)\) |
+| 未知量 | 离散假设 $H_i$ | 连续参数 $\theta$ |
+| 先验 | $P(H_i)$ | $f_\Theta(\theta)$ |
+| 似然 | $f_X(x\mid H_i)$ | $f_{\vec X}(\vec x\mid\theta)$ |
+| 后验 | $P(H_i\mid x)$ | $f_{\Theta\mid\vec X}(\theta\mid\vec x)$ |
+| 动作 | 判 $H_0$ / $H_1$ | 给出 $\hat\theta$ |
+| 代价 | 代价矩阵 $C_{ij}$ | 代价函数 $C(\hat\theta,\theta)$ |
 | 最优规则 | Bayes / MAP / ML | Bayes / MAP / MMSE / MAE |
 | 核心结论 | 均匀代价下 MAP 最小化错误率 | L2 下 MMSE 是后验均值，L1 下 MAE 是后验中位数 |
 
@@ -1488,25 +1488,25 @@ $$
 ## 6. 自测题（附答案要点）
 
 1. **为什么均匀代价下 Bayes 规则等于 MAP？**  
-   因为代价比变成 \(1\)，判决阈值只剩先验比 \(P_0/P_1\)，而后验 odds 恰好是 \(\Lambda(x)P_1/P_0\)，所以比较 \(\Lambda(x)\) 与 \(P_0/P_1\) 等价于比较后验概率。
+   因为代价比变成 $1$，判决阈值只剩先验比 $P_0/P_1$，而后验 odds 恰好是 $\Lambda(x)P_1/P_0$，所以比较 $\Lambda(x)$ 与 $P_0/P_1$ 等价于比较后验概率。
 
-2. **均匀代价下，为什么 \(E[\text{cost}]=P(\text{error})\)？**  
-   因为 \(C_{00}=C_{11}=0\)、\(C_{10}=C_{01}=1\)，期望代价只剩 \(P_0P_{FA}+P_1P_M\)，这正是全概率公式给出的错误概率。
+2. **均匀代价下，为什么 $E[\text{cost}]=P(\text{error})$？**  
+   因为 $C_{00}=C_{11}=0$、$C_{10}=C_{01}=1$，期望代价只剩 $P_0P_{FA}+P_1P_M$，这正是全概率公式给出的错误概率。
 
-3. **如果虚警代价 \(C_{FA}\) 变大，判决阈值怎么移动？**  
-   阈值 \(\frac{C_{FA}}{C_M}\frac{P_0}{P_1}\) 变大，更难判 \(H_1\)，即更保守。
+3. **如果虚警代价 $C_{FA}$ 变大，判决阈值怎么移动？**  
+   阈值 $\frac{C_{FA}}{C_M}\frac{P_0}{P_1}$ 变大，更难判 $H_1$，即更保守。
 
-4. **如果先验 \(P_0\) 变大，阈值怎么移动？**  
-   \(P_0/P_1\) 变大，阈值变大，更倾向判 \(H_0\)。
+4. **如果先验 $P_0$ 变大，阈值怎么移动？**  
+   $P_0/P_1$ 变大，阈值变大，更倾向判 $H_0$。
 
 5. **MAP 和 ML 什么时候相同？**  
    当先验相等（或先验为常数）时，MAP 退化为 ML。均匀代价本身只保证 MAP，不保证 ML。
 
-6. **p 值是不是 \(P(H_0\mid \text{data})\)？**  
-   不是。p 值是在 \(H_0\) 为真的前提下，观测到当前数据或更极端数据的概率；\(P(H_0\mid \text{data})\) 是后验概率，需要先验才能算。
+6. **p 值是不是 $P(H_0\mid \text{data})$？**  
+   不是。p 值是在 $H_0$ 为真的前提下，观测到当前数据或更极端数据的概率；$P(H_0\mid \text{data})$ 是后验概率，需要先验才能算。
 
 7. **MMSE 为什么是后验均值？**  
-   因为平方损失 \(E[(\hat\theta-\Theta)^2\mid x]\) 对 \(\hat\theta\) 求导，最优解满足 \(\hat\theta=E[\Theta\mid x]\)。
+   因为平方损失 $E[(\hat\theta-\Theta)^2\mid x]$ 对 $\hat\theta$ 求导，最优解满足 $\hat\theta=E[\Theta\mid x]$。
 
 8. **Hoeffding 置信区间为什么是保守的？**  
    它只利用了随机变量有界和独立，没有利用具体分布形状，因此界通常比精确区间更宽，覆盖率不低于名义水平。
@@ -1515,24 +1515,24 @@ $$
 
 ## 7. 一页纸记忆版
 
-- **假设检验三件事**：先验 \(P_i\)、似然 \(f_X(x\mid H_i)\)、代价 \(C_{ij}\)。
-- **判决阈值**：\(\Lambda(x)\gtrless \frac{C_{10}-C_{00}}{C_{01}-C_{11}}\frac{P_0}{P_1}\)。
-- **均匀代价**：\(C_{00}=C_{11}=0,\ C_{10}=C_{01}=1\)。
-- **均匀代价的后果**：Bayes = MAP；\(E[C]=P(\text{error})\)；MAP 最小化错误率。
+- **假设检验三件事**：先验 $P_i$、似然 $f_X(x\mid H_i)$、代价 $C_{ij}$。
+- **判决阈值**：$\Lambda(x)\gtrless \frac{C_{10}-C_{00}}{C_{01}-C_{11}}\frac{P_0}{P_1}$。
+- **均匀代价**：$C_{00}=C_{11}=0,\ C_{10}=C_{01}=1$。
+- **均匀代价的后果**：Bayes = MAP；$E[C]=P(\text{error})$；MAP 最小化错误率。
 - **MAP vs ML**：MAP 多乘了一个先验；先验相等时二者相同。
 - **参数估计三件套**：偏差、标准误、一致性。
-- **MLE**：最大化似然；伯努利例子 \(\hat\theta=S/n\)。
+- **MLE**：最大化似然；伯努利例子 $\hat\theta=S/n$。
 - **贝叶斯估计**：MAP 取众数，MMSE 取均值，MAE 取中位数。
-- **置信区间**：Hoeffding 给出分布无关的保守区间，宽度随 \(n\) 增大而变小。
+- **置信区间**：Hoeffding 给出分布无关的保守区间，宽度随 $n$ 增大而变小。
 
 ---
 
 ## 8. English Summary（一分钟英文复述）
 
-- **Hypothesis testing** starts with a hidden parameter \(\theta\), a parametric model \(f_X(x\mid\theta)\), and an observation \(X=x\). We design a **decision rule** to choose between \(H_0\) and \(H_1\).
-- The **likelihood ratio** is \(\Lambda(x)=f_X(x\mid H_1)/f_X(x\mid H_0)\). The **Bayes decision rule** compares it with \(\frac{C_{10}-C_{00}}{C_{01}-C_{11}}\cdot\frac{P_0}{P_1}\).
-- Under **uniform cost** (\(C_{00}=C_{11}=0,\ C_{10}=C_{01}=1\)), the Bayes rule reduces to the **MAP rule**, \(\Lambda(x)\gtrless P_0/P_1\).
-- Under uniform cost, **expected cost equals probability of error**: \(E[\text{cost}]=P_0P_{FA}+P_1P_M=P(\text{error})\). Therefore, the **MAP rule minimizes the probability of error**.
+- **Hypothesis testing** starts with a hidden parameter $\theta$, a parametric model $f_X(x\mid\theta)$, and an observation $X=x$. We design a **decision rule** to choose between $H_0$ and $H_1$.
+- The **likelihood ratio** is $\Lambda(x)=f_X(x\mid H_1)/f_X(x\mid H_0)$. The **Bayes decision rule** compares it with $\frac{C_{10}-C_{00}}{C_{01}-C_{11}}\cdot\frac{P_0}{P_1}$.
+- Under **uniform cost** ($C_{00}=C_{11}=0,\ C_{10}=C_{01}=1$), the Bayes rule reduces to the **MAP rule**, $\Lambda(x)\gtrless P_0/P_1$.
+- Under uniform cost, **expected cost equals probability of error**: $E[\text{cost}]=P_0P_{FA}+P_1P_M=P(\text{error})$. Therefore, the **MAP rule minimizes the probability of error**.
 - In **estimation**, MLE maximizes the likelihood; MAP maximizes the posterior; MMSE is the posterior mean; MAE is the posterior median.
 - The **Hoeffding inequality** gives a distribution-free confidence interval for independent bounded random variables.
 
