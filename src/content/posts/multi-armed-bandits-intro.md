@@ -42,6 +42,8 @@ lang: "zh-CN"
 | 9 | ETC 算法伪代码；经验均值 μ̂i(t) |
 | 10 | k=5, m=3 的动作序列例子；commit 阶段 |
 
+十页原图按原顺序收在文末 **第 10 节「手稿原页」**，正文提到「原页 N」时可以直接对照。
+
 ---
 
 ## 1. 问题设定：一场 learner 与 environment 的序列博弈
@@ -463,3 +465,50 @@ ETC：前 mk 轮轮转探索 → 之后锁定 argmax μ̂i(mk)
 ```
 
 > 整份讲义真正的收获不是某个公式，而是**regret 这个记账方式**：它把「在线决策做得好不好」变成了一个可加、可分解、能和算法结构对上的量。一旦写成 $\sum_a \Delta_a\mathbb E[T_a(n)]$，「算法设计」就变成了「怎么分配每个臂的试验次数」。
+
+---
+
+## 10. 手稿原页
+
+十页手写讲义的完整扫描，按原顺序排列。正文里提到「原页 $N$」时，指的就是这一节的第 $N$ 张。
+
+**原页 1 · 博弈设定与 regret 的第一次出现**
+
+![Lecture 3b 第 1 页：learner 与 environment 的序列博弈，horizon 与 regret 的定义](/images/multi-armed-bandits-intro/p01.jpg)
+
+**原页 2 · 探索–利用两难；MAB 与 RL 的分界**
+
+![Lecture 3b 第 2 页：exploration–exploitation dilemma，以及 MAB 是 RL 特例](/images/multi-armed-bandits-intro/p02.jpg)
+
+**原页 3 · 随机平稳 bandit 与学习目标（效用函数）**
+
+![Lecture 3b 第 3 页：stochastic stationary bandits，累积奖励与效用函数的选择](/images/multi-armed-bandits-intro/p03.jpg)
+
+**原页 4 · 伯努利例子；均值、最优臂与最优均值**
+
+![Lecture 3b 第 4 页：广告点击的伯努利模型，μa 的定义与 a*、μ*](/images/multi-armed-bandits-intro/p04.jpg)
+
+**原页 5 · regret 定义与三种等价写法**
+
+![Lecture 3b 第 5 页：Rn(π) 的三种写法与对数 regret](/images/multi-armed-bandits-intro/p05.jpg)
+
+**原页 6 · 对数 regret 的概率含义；指示函数与动作计数**
+
+![Lecture 3b 第 6 页：1/t 概率条件、指示函数与 Ta(t) 的定义](/images/multi-armed-bandits-intro/p06.jpg)
+
+**原页 7 · 次优间隙与 Regret Decomposition Formula**
+
+![Lecture 3b 第 7 页：Δa=μ*−μa 与按臂求和的 regret 分解](/images/multi-armed-bandits-intro/p07.jpg)
+
+**原页 8 · 1-sub-Gaussian、尾概率与 ETC 的两阶段**
+
+![Lecture 3b 第 8 页：次高斯尾概率、有界与次高斯的关系、ETC 的动机](/images/multi-armed-bandits-intro/p08.jpg)
+
+**原页 9 · ETC 伪代码与经验均值**
+
+![Lecture 3b 第 9 页：Explore-Then-Commit 算法与 μ̂i(t) 的定义](/images/multi-armed-bandits-intro/p09.jpg)
+
+**原页 10 · k=5、m=3 的动作序列**
+
+![Lecture 3b 第 10 页：探索期的轮转序列与 commit 阶段的切换](/images/multi-armed-bandits-intro/p10.jpg)
+
