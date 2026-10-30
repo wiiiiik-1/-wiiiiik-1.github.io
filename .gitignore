@@ -24,3 +24,8 @@ work/
 # migration scratch (pack 测试的假 home 里有凭据副本，绝不能提交)
 dsh-migrate/.tmp-packtest/
 .mig-digest/
+
+# PDF 阅读与渲染的临时产物（页面图、临时库、pip 缓存）
+.lec3b/
+.pylibs/
+.piptmp/
